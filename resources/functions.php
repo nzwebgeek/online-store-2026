@@ -32,7 +32,7 @@ function get_products(){
   $query =  query("SELECT * FROM products");
   confirm($query);
   // Fetch from table row
-  while ($row=fetch_arry($query)) {
+  while ($row=fetch_array($query)) {
   // Herodox
 $product_output = <<<DELIMETER
 <div class="col-md-3">
@@ -59,7 +59,17 @@ function get_categories(){
    
 // read query
 while ($row = fetch_array($query)) {
-            echo  "<a href='#' class='btn btn-outline-dark btn-sm'>{$row['cat_title']}</a>";
-}
+$product_output = <<<DELIMETER
+<div class="col-md-3">
+    <div class="card h-100">
+        <a href="item.php?id={$row['product_id']}"><img src="{$row['product_image']}" class="card-img-top"></a>
+        <div class="card-body text-center">
+        <h6 class="card-title">{$row['product_title']}</h6>
+        <p class="text-warning fw-bold">&#36;{$row['product_price']}</p>
+        <button class="btn btn-dark btn-sm" onclick="window.location.href='item.php?id={$row['product_id']}'">Add to Cart</button>
+        </div>
+    </div>
+</div>
+DELIMETER;}
            
 }
