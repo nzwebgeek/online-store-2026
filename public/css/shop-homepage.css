@@ -1,0 +1,33 @@
+ .hero {
+      background: linear-gradient(rgba(0,0,0,.6), rgba(0,0,0,.6)), 
+      url('https://images.unsplash.com/photo-1441986300917-64674bd600d8');
+      background-size: cover;
+      background-position: center;
+      color: white;
+      padding: 120px 0;
+    }
+
+    .card img {
+      height: 220px;
+      object-fit: cover;
+    }
+
+    .category-card img {
+      height: 180px;
+      object-fit: cover;
+    }
+
+    footer {
+      background-color: #212529;
+      color: #ccc;
+      padding: 40px 0;
+    }
+
+    footer a {
+      color: #ccc;
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      color: #fff;
+    }
