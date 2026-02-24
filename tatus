@@ -1,0 +1,41 @@
+[33mcommit 88f80d19160dceaa491a94951b5ce4c12a3f3c82[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mfront-end[m[33m)[m
+Author: mikenzwebgeek <mikenzwebgeek@gmail.com>
+Date:   Tue Feb 24 15:26:14 2026 +1300
+
+    made code more compact
+
+[33mcommit ac00d68e0309f656388ebf731b8c963d6e5a48b7[m
+Author: mikenzwebgeek <mikenzwebgeek@gmail.com>
+Date:   Tue Feb 24 14:55:17 2026 +1300
+
+    add haradox to get_categories
+
+[33mcommit 9365b48fb111910612cd96cfa9edb6e15e272ba0[m
+Author: mikenzwebgeek <mikenzwebgeek@gmail.com>
+Date:   Tue Feb 24 14:52:39 2026 +1300
+
+    replaced mysqli_fetch_assoc with custom function called fetch_array inside the get_categories functions
+
+[33mcommit b70aa5566c38559b3df35b8cefc90f9646db27e7[m
+Author: mikenzwebgeek <mikenzwebgeek@gmail.com>
+Date:   Tue Feb 24 14:50:03 2026 +1300
+
+    added inside get_categories function, added confirm and query function
+
+[33mcommit c1d69a7c919e63775e30a78c9dbc79033fc0c2fe[m
+Author: mikenzwebgeek <mikenzwebgeek@gmail.com>
+Date:   Tue Feb 24 14:48:51 2026 +1300
+
+    removed sql from side-nav.php and put it into functions
+
+[33mcommit e79919d0f7ec7ca46df668c35a54035246cfec50[m[33m ([m[1;31morigin/main[m[33m, [m[1;32mmain[m[33m)[m
+Author: mikenzwebgeek <mikenzwebgeek@gmail.com>
+Date:   Tue Feb 24 14:36:59 2026 +1300
+
+    first commit
+
+[33mcommit 86cd793abe8547e1edebc20ac233f3ace3c462ba[m
+Author: mikenzwebgeek <mikenzwebgeek@gmail.com>
+Date:   Tue Feb 24 14:32:22 2026 +1300
+
+    bare bones ecommerce structure

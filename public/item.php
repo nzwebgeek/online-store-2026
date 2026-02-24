@@ -1,14 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Product Item</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-</head>
-<body>
+<?php require_once("../resources/config.php");?>
+<?php include(TEMPLATE_FRONT . DS . "header.php"); ?>
+
 
 <div class="container my-5">
+
+
+<?php include(TEMPLATE_FRONT . DS ."side-nav.php");?>
+
   <div class="card shadow-lg border-0">
     <div class="row g-0 align-items-center">
       
@@ -21,29 +19,31 @@
 
       <!-- Product Info -->
       <div class="col-md-7">
+        <?php  
+          $query = query(" SELECT * FROM products WHERE product_id = ". escape_string($_GET['id'])."");
+          confirm($query);
+
+          while ($row = fetch_array($query)) :
+          
+        ?>
         <div class="card-body p-4">
           
-          <h2 class="card-title mb-3">Premium Wireless Headphones</h2>
+          <h2 class="card-title mb-3"><?php echo $row['product_title']; ?></h2>
           
           <p class="card-text text-muted mb-4">
-            Experience crystal-clear sound with noise cancellation and 
-            up to 30 hours of battery life. Designed for comfort and 
-            premium listening.
+           <?php echo $row['product_description']; ?>
           </p>
 
-          <h4 class="text-primary fw-bold mb-4">$199.99</h4>
+          <h4 class="text-primary fw-bold mb-4"><?php echo "&#36;". $row["product_price"]; ?></h4>
 
           <button class="btn btn-dark btn-md">
             🛒 Add to Cart
           </button>
-
+        <?php endwhile; ?>
         </div>
       </div>
 
     </div>
   </div>
 </div>
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-</body>
-</html>
+<?php include(TEMPLATE_FRONT . DS . "footer.php"); ?>

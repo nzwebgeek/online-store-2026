@@ -15,7 +15,7 @@
   <div class="container">
     <h2 class="text-center mb-4">Featured Products</h2>
     <div class="row g-4">
-
+      <h3><?php echo $_SESSION['product_1']; ?></h3>
       <!-- Product 1 -->
       <?php get_products(); ?>
     </div>
