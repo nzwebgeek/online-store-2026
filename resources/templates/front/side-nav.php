@@ -6,9 +6,8 @@
         <div class="card category-card">
           <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30" class="card-img-top">
           <div class="card-body text-center">
-            <h5 class="card-title">Watches</h5>
-                  <!--moved sqlfrom here to functions--->
-                 <?php get_categories(); ?>
+            <h5 class="card-title">Categories</h5>
+            <?php get_categories();?>
           </div>
         </div>
       </div>

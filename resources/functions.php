@@ -26,6 +26,8 @@ function fetch_array($result){
     return mysqli_fetch_array($result);
 }
 
+/*******************FRONT END FUNCTIONS************************/
+
 // get products
 function get_products(){
     // Get
@@ -39,7 +41,7 @@ $product_output = <<<DELIMETER
     <div class="card h-100">
         <a href="item.php?id={$row['product_id']}"><img src="{$row['product_image']}" class="card-img-top"></a>
         <div class="card-body text-center">
-        <h6 class="card-title">{$row['product_title']}</h6>
+        <h6 class="card-title btn " onclick="window.location.href='item.php?id={$row['product_id']}'">{$row['product_title']}</h6>
         <p class="text-warning fw-bold">&#36;{$row['product_price']}</p>
         <button class="btn btn-dark btn-sm" onclick="window.location.href='item.php?id={$row['product_id']}'">Add to Cart</button>
         </div>
@@ -59,17 +61,17 @@ function get_categories(){
    
 // read query
 while ($row = fetch_array($query)) {
-$product_output = <<<DELIMETER
-<div class="col-md-3">
-    <div class="card h-100">
-        <a href="item.php?id={$row['product_id']}"><img src="{$row['product_image']}" class="card-img-top"></a>
-        <div class="card-body text-center">
-        <h6 class="card-title">{$row['product_title']}</h6>
-        <p class="text-warning fw-bold">&#36;{$row['product_price']}</p>
-        <button class="btn btn-dark btn-sm" onclick="window.location.href='item.php?id={$row['product_id']}'">Add to Cart</button>
-        </div>
-    </div>
-</div>
-DELIMETER;}
+$categories_output = <<<DELIMETER
+<a href='category.php?id={$row['cat_id']}' class='btn btn-outline-dark btn-sm'>{$row['cat_title']}</a>
+DELIMETER;
+echo $categories_output;
+    }
            
 }
+
+
+
+
+
+
+ /**************BACK END FUNCTIONS*********************/
