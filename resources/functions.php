@@ -49,4 +49,16 @@ DELIMETER;
 echo $product_output;
   }
 }
-?>
+
+function get_categories(){
+   
+    // create query 
+    $query = query("SELECT * FROM categories");
+    // send in query & fetch
+   
+// read query
+while ($row = mysqli_fetch_assoc($query)) {
+            echo  "<a href='#' class='btn btn-outline-dark btn-sm'>{$row['cat_title']}</a>";
+}
+           
+}

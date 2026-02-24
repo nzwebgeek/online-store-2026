@@ -7,20 +7,8 @@
           <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30" class="card-img-top">
           <div class="card-body text-center">
             <h5 class="card-title">Watches</h5>
-                  <?php 
-                  // create query
-                    $query = "SELECT * FROM categories";
-                    // send in query & fetch
-                    $send_query = mysqli_query($conn, $query);
-
-                    if(!$send_query){
-                      die("Query Failed" . mysqli_error($conn));
-                    }
-                // read query
-                while ($row = mysqli_fetch_assoc($send_query)) {
-                           echo  "<a href='#' class='btn btn-outline-dark btn-sm'>{$row['cat_title']}</a>";
-                }
-            ?>
+                  <!--moved sqlfrom here to functions--->
+                 <?php get_categories(); ?>
           </div>
         </div>
       </div>
