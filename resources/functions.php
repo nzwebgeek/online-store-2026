@@ -22,7 +22,7 @@ function escape_string($str){
     return mysqli_real_escape_string($conn, $str);
 }
 // returns data from database
-function fetch_arry($result){
+function fetch_array($result){
     return mysqli_fetch_array($result);
 }
 
@@ -58,7 +58,7 @@ function get_categories(){
     confirm($query);
    
 // read query
-while ($row = mysqli_fetch_assoc($query)) {
+while ($row = fetch_array($query)) {
             echo  "<a href='#' class='btn btn-outline-dark btn-sm'>{$row['cat_title']}</a>";
 }
            
