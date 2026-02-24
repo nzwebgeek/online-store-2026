@@ -55,6 +55,7 @@ function get_categories(){
     // create query 
     $query = query("SELECT * FROM categories");
     // send in query & fetch
+    confirm($query);
    
 // read query
 while ($row = mysqli_fetch_assoc($query)) {
