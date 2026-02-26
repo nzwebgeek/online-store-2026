@@ -3,7 +3,7 @@
 <?php
 // increases when plus button or add to cart is pressed
 // if database product is over 0 then show product, if not dont show product
-    $_SESSION["product_"] +=1; // Availabilitty query
+   echo $_SESSION["product_"]; // Availabilitty query
 ?>
 <div class="container py-5">
     

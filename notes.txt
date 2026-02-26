@@ -7,3 +7,11 @@ templates/front (footer, header, navbar etc)
 setup mysql table for category
 in the includes on each page add below
 <?php include(TEMPLATE_FRONT . DS . "side-nav.php"); ?>
+===========
+Cart.php
+========
+  // echos incrementing id as a test case
+     /*   $_SESSION['product_' . $_GET['add']] +=1;
+        redirect("index.php");*/
+        // check
+------------------------------------------------
