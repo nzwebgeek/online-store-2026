@@ -33,7 +33,7 @@ if(isset($_GET["remove"])){
     if ($_SESSION["product_" . $_GET['remove']] < 1){
     unset($_SESSION['item_total']);
     unset($_SESSION['item_quantity']);
-    redirect('checkout.php');
+    redirect('checkout.php')
     }
     else{
     redirect('checkout.php');
