@@ -3,10 +3,11 @@
 <?php
 // increases when plus button or add to cart is pressed
 // if database product is over 0 then show product, if not dont show product
-   echo $_SESSION["product_"]; // Availabilitty query
+   // Availabilitty query
 ?>
+
 <div class="container py-5">
-    
+    <h3 class="text=center bg-danger"><?php get_message(); ?></h3>
     <h2 class="mb-4 fw-bold">Checkout</h2>
     
     <div class="row">

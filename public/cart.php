@@ -14,16 +14,14 @@ if (isset($_GET['add']))
 
         if ($row["product_quantity"] != $_SESSION['product_' . $_GET['add']]) 
         {
-
-            $_SESSION['product_'] = $_GET['add']+=1; // then increment
+            $_SESSION['product_' . $_GET['add']] += 1;
             redirect('checkout.php');
-    
         }
         else
-        {
-            set_message('We only have '.$row['product_quantity'].' available');
-            redirect('checkout.php');
-        }
+            {
+                set_message("We only have ". $row['product_quantity']." Available of {$row['product_title']}");
+                redirect("checkout.php");
+            }
 
     }
 }
