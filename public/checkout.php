@@ -1,9 +1,10 @@
 <?php require_once("../resources/config.php");?>
 <?php include(TEMPLATE_FRONT . DS . "header.php"); ?>
+<?php include("cart.php"); ?>
 <?php
 // increases when plus button or add to cart is pressed
 // if database product is over 0 then show product, if not dont show product
-   // Availabilitty query
+// Availability query
 ?>
 
 <div class="container py-5">
@@ -25,25 +26,13 @@
                                     <th>Price</th>
                                     <th>Quantity</th>
                                     <th>Sub Total</th>
+                                    <th>Remove</th>
+                                    <th>Add</th>
+                                    <th>Delete</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>Product 1</td>
-                                    <td>$50.00</td>
-                                    <td>
-                                        <input type="number" class="form-control w-50" value="1" min="1">
-                                    </td>
-                                    <td>$50.00</td>
-                                </tr>
-                                <tr>
-                                    <td>Product 2</td>
-                                    <td>$30.00</td>
-                                    <td>
-                                        <input type="number" class="form-control w-50" value="2" min="1">
-                                    </td>
-                                    <td>$60.00</td>
-                                </tr>
+                            <?php cart(); ?>
                             </tbody>
                         </table>
                     </div>
@@ -62,8 +51,8 @@
                     
                     <ul class="list-group list-group-flush mb-3">
                         <li class="list-group-item d-flex justify-content-between">
-                            <span>Items</span>
-                            <strong>3</strong>
+                            <span>Items</span><!--refresh quantity increase small bug-->
+                            <strong><?php echo isset($_SESSION['item_quantity']) ? $_SESSION['item_quantity'] : $_SESSION['item_quantity'] ='0'; ?></strong>
                         </li>
                         <li class="list-group-item d-flex justify-content-between">
                             <span>Shipping & Handling</span>
@@ -71,7 +60,7 @@
                         </li>
                         <li class="list-group-item d-flex justify-content-between">
                             <span class="fw-bold">Order Total</span>
-                            <strong>$110.00</strong>
+                            <strong><?php echo isset($_SESSION['item_total']) ? $_SESSION['item_total'] : $_SESSION['item_total'] ='0'; ?></strong>
                         </li>
                     </ul>
 
