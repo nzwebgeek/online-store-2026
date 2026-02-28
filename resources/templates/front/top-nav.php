@@ -9,6 +9,7 @@
         <li class="nav-item"><a class="nav-link active" href="index.php">Home</a></li>
         <li class="nav-item"><a class="nav-link" href="shop.php">Shop</a></li>
         <li class="nav-item"><a class="nav-link" href="login.php">Login</a></li>
+        <li class="nav-item"><a class="nav-link" href="../public/admin/index.php">Admin</a></li>
         <li class="nav-item"><a class="nav-link" href="checkout.php">Checkout</a></li>
         <li class="nav-item"><a class="nav-link" href="contact.php">Contact</a></li>
         <li class="nav-item">

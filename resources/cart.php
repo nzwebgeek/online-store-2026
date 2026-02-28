@@ -1,4 +1,4 @@
-<?php require_once("../resources/config.php");?>
+<?php require_once("config.php");?>
 
 <?php
     // go inside products table and see if quanity is equal to session on front end
@@ -15,12 +15,12 @@ if (isset($_GET['add']))
         if ($row["product_quantity"] != $_SESSION['product_' . $_GET['add']]) 
         {
             $_SESSION['product_' . $_GET['add']] += 1;
-            redirect('checkout.php');
+            redirect('../public/checkout.php');
         }
         else
             {
                 set_message("We only have ". $row['product_quantity']." Available of {$row['product_title']}");
-                redirect("checkout.php");
+                redirect("../public/checkout.php");
             }
 
     }
@@ -33,10 +33,10 @@ if(isset($_GET["remove"])){
     if ($_SESSION["product_" . $_GET['remove']] < 1){
     unset($_SESSION['item_total']);
     unset($_SESSION['item_quantity']);
-    redirect('checkout.php');
+    redirect('../public/checkout.php');
     }
     else{
-    redirect('checkout.php');
+    redirect('../public/checkout.php');
     }
   
 }
@@ -48,7 +48,7 @@ if(isset($_GET['delete'])){
     $_SESSION['product_' . $_GET['delete']] = '0';
     unset($_SESSION['item_total']);
     unset($_SESSION['item_quantity']);
-    redirect('checkout.php'); // need to unset before redirecting
+    redirect('../public/checkout.php'); // need to unset before redirecting
 }
 //----------------------------------------------------------------------------------------------------------
 function cart(){
@@ -87,14 +87,12 @@ $product = <<<DELIMETER
     </td>
     <td>&#36;{$sub}</td>
     <td>
-        <a class="btn btn-warning" href="cart.php?remove={$row['product_id']}"><span class="bi bi-dash-circle"></span></a>     
+        <a class="btn btn-warning" href="../resources/cart.php?remove={$row['product_id']}"><span class="bi bi-dash-circle"></span></a>     
     <td>
-        <a class="btn btn-success" href="cart.php?add={$row['product_id']}"><span class="bi bi-plus"></span></a>
+        <a class="btn btn-success" href="../resources/cart.php?add={$row['product_id']}"><span class="bi bi-plus"></span>
     </td>
     <td>
-        <a class="btn btn-danger"  href="cart.php?delete={$row['product_id']}"><span class="bi bi-trash"></span></a>
-    </td>
-    <td>
+    <a class="btn btn-danger" href="../resources/cart.php?delete={$row['product_id']}"><span class="bi bi-trash"></span><td>
     </td?
     </td>
 </button>

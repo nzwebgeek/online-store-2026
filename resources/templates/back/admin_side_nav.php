@@ -1,15 +1,18 @@
  <!-- Sidebar for large screens -->
         <nav class="d-none d-lg-block bg-dark text-white flex-shrink-0 p-3" style="width: 250px;">
-            <a href="index.html" class="d-flex align-items-center mb-3 text-white text-decoration-none">
+            <a href="index.php" class="d-flex align-items-center mb-3 text-white text-decoration-none">
                 <span class="fs-4">SB Admin</span>
             </a>
             <hr>  
             <ul class="nav nav-pills flex-column mb-auto">
-                <li class="nav-item"><a href="index.html" class="nav-link text-white active"><i class="fas fa-tachometer-alt me-2"></i> Dashboard</a></li>
+                <li class="nav-item"><a href="../index.php" class="nav-link text-white active"><i class="fas fa-tachometer-alt me-2"></i> Home</a></li>
+                <li class="nav-item"><a href="index.php" class="nav-link text-white active"><i class="fas fa-tachometer-alt me-2"></i> Dashboard</a></li>
                 <li><a href="index.php?orders" class="nav-link text-white"><i class="fas fa-chart-bar me-2"></i> Orders</a></li>
-                <li><a href="add_product.html" class="nav-link text-white"><i class="fas fa-table me-2"></i> Add Product</a></li>
-                <li><a href="categories.html" class="nav-link text-white"><i class="fas fa-desktop me-2"></i> Categories</a></li>
-                <li><a href="users.html" class="nav-link text-white"><i class="fas fa-users me-2"></i> Users</a></li>
+                <li><a href="index.php?products" class="nav-link text-white"><i class="fas fa-table me-2"></i>View Products</a></li>
+                <li><a href="index.php?add_product" class="nav-link text-white"><i class="fas fa-desktop me-2"></i> Add Products</a></li>
+                <li><a href="index.php?categories" class="nav-link text-white"><i class="fas fa-users me-2"></i> Categories</a></li>
+                <li><a href="index.php?users" class="nav-link text-white"><i class="fas fa-users me-2"></i> Users</a></li>
+
             </ul>
             <hr>
         </nav>
@@ -22,11 +25,14 @@
             </div>
             <div class="offcanvas-body">
                 <ul class="nav nav-pills flex-column mb-auto">
-                    <li class="nav-item"><a href="index.html" class="nav-link text-white active"><i class="fas fa-tachometer-alt me-2"></i> Dashboard</a></li>
+                    <li class="nav-item"><a href="index.php" class="nav-link text-white active"><i class="fas fa-tachometer-alt me-2"></i> Home</a></li>
+                    <li class="nav-item"><a href="index.php" class="nav-link text-white active"><i class="fas fa-tachometer-alt me-2"></i> Dashboard</a></li>
                     <li><a href="index.php?orders" class="nav-link text-white"><i class="fas fa-chart-bar me-2"></i> Orders</a></li>
-                    <li><a href="add_product.html" class="nav-link text-white"><i class="fas fa-table me-2"></i> Add Product</a></li>
-                    <li><a href="categories.html" class="nav-link text-white"><i class="fas fa-desktop me-2"></i> Categories</a></li>
-                    <li><a href="users.html" class="nav-link text-white"><i class="fas fa-users me-2"></i> Users</a></li>
+                    <li><a href="index.php?products" class="nav-link text-white"><i class="fas fa-table me-2"></i> View Products</a></li>
+                    <li><a href="index.php?add_product" class="nav-link text-white"><i class="fas fa-desktop me-2"></i> Add Product</a></li>
+                    <li><a href="index.php?categories" class="nav-link text-white"><i class="fas fa-users me-2"></i> Categories</a></li>
+                    <li><a href="index.php?users" class="nav-link text-white"><i class="fas fa-users me-2"></i> Users</a></li>
+
                 </ul>
             </div>
         </div>

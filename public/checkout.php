@@ -1,6 +1,5 @@
 <?php require_once("../resources/config.php");?>
 <?php include(TEMPLATE_FRONT . DS . "header.php"); ?>
-<?php include("cart.php"); ?>
 <?php
 // increases when plus button or add to cart is pressed
 // if database product is over 0 then show product, if not dont show product

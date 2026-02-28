@@ -10,11 +10,11 @@
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                    data-bs-toggle="dropdown" aria-expanded="false">
-                    <i class="fas fa-user"></i> John Smith
+                    <i class="fas fa-user"></i> <?php echo $_SESSION['username']; ?>
                 </a>
                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
                     <li><hr class="dropdown-divider"></li>
-                    <li><a class="dropdown-item" href="#"><i class="fas fa-power-off me-2"></i> Log Out</a></li>
+                    <li><a class="dropdown-item" href="logout.php"><i class="fas fa-power-off me-2"></i> Log Out</a></li>
                 </ul>
             </li>
         </ul>

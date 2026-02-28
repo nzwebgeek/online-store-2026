@@ -61,7 +61,7 @@ $product_output = <<<DELIMETER
         <div class="card-body text-center">
         <h6 class="card-title btn " onclick="window.location.href='item.php?id={$row['product_id']}'">{$row['product_title']}</h6>
         <p class="text-warning fw-bold">&#36;{$row['product_price']}</p>
-        <button class="btn btn-dark btn-sm" onclick="window.location.href='cart.php?add={$row['product_id']}'">Add to Cart</button>
+        <button class="btn btn-dark btn-sm" onclick="window.location.href='../resources/cart.php?add={$row['product_id']}'">Add to Cart</button>
         </div>
     </div>
 </div>
@@ -153,7 +153,7 @@ function login_user(){
             redirect("index.php");
         }
         else{
-            set_message("Welcome to Admin {$username}");
+            $_SESSION["username"] = $username;
             redirect("admin");
         }
     }
