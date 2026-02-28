@@ -10,7 +10,16 @@
 <div class="container py-5">
     <h3 class="text=center bg-danger"><?php get_message(); ?></h3>
     <h2 class="mb-4 fw-bold">Checkout</h2>
-    
+<!--Paypal Form Here-->
+<form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post">
+ <!-- <input type="hidden" name="cmd" value="_xclick">-->
+  <input type="hidden" name="cmd" value="_cart"> 
+  <input type="hidden" name="business" value="seller_@business.example.com">
+  <input type="hidden" name="currency_code" value="NZD">
+  <input type="hidden" name="upload" value="1">
+  <input type="hidden" name="return" value="http://localhost/online-store/public/thank_you.php"><!--Extra Tip From ChatGpt, lets paypal know where to go-->
+<!--PayPal-->
+
     <div class="row">
         
         <!-- Checkout Table -->
@@ -26,9 +35,6 @@
                                     <th>Price</th>
                                     <th>Quantity</th>
                                     <th>Sub Total</th>
-                                    <th>Remove</th>
-                                    <th>Add</th>
-                                    <th>Delete</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -40,7 +46,7 @@
                 </div>
             </div>
         </div>
-
+</form>
         <!-- Cart Totals -->
         <div class="col-lg-4 mt-4 mt-lg-0">
             <div class="card shadow-sm">
@@ -63,11 +69,9 @@
                             <strong><?php echo isset($_SESSION['item_total']) ? $_SESSION['item_total'] : $_SESSION['item_total'] ='0'; ?></strong>
                         </li>
                     </ul>
-
-                    <button class="btn btn-primary w-100">
-                        Proceed to Payment
-                    </button>
-
+                    <!--Check Out Button"-->
+                   <?php echo show_paypal(); ?>
+                    <!--Check Out Button-->
                 </div>
             </div>
         </div>

@@ -1,0 +1,17 @@
+<?php
+
+<!DOCTYPE html>
+<html>
+<body>
+
+<form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post">
+  <input type="hidden" name="cmd" value="_xclick">
+  <input type="hidden" name="business" value="seller_@business.example.com">
+  <input type="hidden" name="item_name" value="Test Item">
+  <input type="hidden" name="amount" value="10.00">
+  <input type="hidden" name="currency_code" value="NZD">
+  <input type="submit" value="Pay with Sandbox">
+</form>
+
+</body>
+</html>

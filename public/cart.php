@@ -33,12 +33,16 @@ if(isset($_GET["remove"])){
     if ($_SESSION["product_" . $_GET['remove']] < 1){
     unset($_SESSION['item_total']);
     unset($_SESSION['item_quantity']);
-    redirect('checkout.php')
+    redirect('checkout.php');
     }
     else{
     redirect('checkout.php');
     }
+  
 }
+
+
+//----------------------------------------------------------
 // set to zero on delete
 if(isset($_GET['delete'])){
     $_SESSION['product_' . $_GET['delete']] = '0';
@@ -48,9 +52,13 @@ if(isset($_GET['delete'])){
 }
 //----------------------------------------------------------------------------------------------------------
 function cart(){
-// Total amount
+// Total amount http://localhost/online-store/public/checkout.php?amt=400&cc=NZD&tx=34535345&st=Completed
 $total = 0;
 $item_quantity = 0; // refresh bug fix by declare variable to 0
+$item_name = 1;
+$item_number = 1;
+$amount = 1;
+$quantity = 1;
 // key is name
 foreach ($_SESSION as $name => $value) {
 // if bigger than zero do not show
@@ -60,8 +68,8 @@ if ($value > 0 ) {
  if(substr($name,0,8) == 'product_'){
 
  //$length = strlen($name -8); 
-  $length = strlen($name) - 8;    
- $id = substr($name,8, $length);
+$length = strlen($name) - 8;    
+$id = substr($name,8, $length);
 // product_ 8 characters
 $query = query("SELECT * FROM products WHERE product_id = " . escape_string($id) ."");
 confirm($query);
@@ -91,8 +99,19 @@ $product = <<<DELIMETER
     </td>
 </button>
 </tr>
+<input type="hidden" name="item_name_{$item_name}" value="{$row['product_title']}">
+<input type="hidden" name="item_number_{$item_number}" value="{$row['product_id']}">
+<input type="hidden" name="amount_{$amount}" value="{$row['product_price']}">
+<input type="hidden" name="quantity_{$quantity}" value="{$value}">
+
+
 DELIMETER;
 echo $product; 
+$item_name++;
+$item_number++;
+$amount++;
+$quantity++;
+
     }
     $_SESSION['item_total'] = $total += $sub;
     $_SESSION['item_quantity'] = $item_quantity;
@@ -100,6 +119,21 @@ echo $product;
  }
 }
 
+}
+
+}
+// Button would not disappear, so added a check of item is greater than zero
+function show_paypal(){
+if (isset($_SESSION['item_quantity']) && $_SESSION['item_quantity'] >=1) {
+$paypayBtn = <<<DELIMETER
+<button class="btn btn-primary w-100">
+Proceed to Payment
+</button>
+DELIMETER;
+return $paypayBtn;        
+}
+else{
+    return ''; // no products
 }
 
 }

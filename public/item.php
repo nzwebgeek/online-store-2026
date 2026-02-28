@@ -36,7 +36,7 @@
 
           <h4 class="text-primary fw-bold mb-4"><?php echo "&#36;". $row["product_price"]; ?></h4>
 
-          <button class="btn btn-dark btn-md">
+          <button class="btn btn-dark btn-md" onclick="window.location.href='cart.php?add=<?php echo $row['product_id'];?>'">
             🛒 Add to Cart
           </button>
         <?php endwhile; ?>
