@@ -1,11 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
 
-<?php add_product(); ?>    
-<?php get_message(); ?>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>SB Admin - Modern Bootstrap 5</title>
 
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="css/sb-admin.css" rel="stylesheet">
+</head>
+
+<body>
         <!-- Page Content -->
 
             <div class="container-fluid px-2 mt-4">
-                <h1 class="mb-4">Add Product </h1>
+                <h1 class="mb-4">Edit Product</h1>
 
                 <form action="" method="post" enctype="multipart/form-data" class="row g-3">
 
@@ -25,12 +40,6 @@
                             <label for="product-price" class="form-label">Product Price</label>
                             <input type="number" name="product_price" id="product-price" class="form-control">
                         </div>
-
-                        <div class="mb-3">
-                            <label for="product-description" class="form-label">Product Short Description</label>
-                            <textarea name="short_desc" id="short-desc" rows="3" class="form-control"></textarea>
-                        </div>
-
                     </div>
 
                     <!-- Sidebar -->
@@ -42,23 +51,22 @@
 
                         <div class="mb-3">
                             <label for="product-category" class="form-label">Product Category</label>
-                            <select name="product_category_id" id="product-category" class="form-select">
+                            <select name="product_category" id="product-category" class="form-select">
                                 <option value="">Select Category</option>
-                                <?php
-                                    show_categories_add_product_page();
-                                ?>
                             </select>
                         </div>
 
                         <div class="mb-3">
-                            <label for="product-brand" class="form-label">Product Quantity</label>
-                            <input type="number" class="form-control" name="product_quantity">
+                            <label for="product-brand" class="form-label">Product Brand</label>
+                            <select name="product_brand" id="product-brand" class="form-select">
+                                <option value="">Select Brand</option>
+                            </select>
                         </div>
 
-                       <!-- <div class="mb-3">
+                        <div class="mb-3">
                             <label for="product-tags" class="form-label">Product Keywords</label>
                             <input type="text" name="product_tags" id="product-tags" class="form-control">
-                        </div>-->
+                        </div>
 
                         <div class="mb-3">
                             <label for="product-image" class="form-label">Product Image</label>

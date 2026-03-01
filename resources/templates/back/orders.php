@@ -13,8 +13,11 @@
   <div class="d-flex justify-content-between align-items-center py-3 mb-3 border-bottom">
     <h1 class="h2">Orders</h1>
   </div>
+  <div class="d-flex justify-content-between align-items-center py-3 mb-3 border-bottom">
+  <h5 class="text-success position-relative"><?php  get_message(); ?></h5>
+  </div>
 
-  
+
   <!-- Orders Table -->
   <div class="card mb-4">
     <div class="card-header">
@@ -25,25 +28,14 @@
         <thead>
           <tr>
             <th scope="col">#Order ID</th>
-            <th scope="col">Customer</th>
-            <th scope="col">Date</th>
-            <th scope="col">Total</th>
+            <th scope="col">Amount</th>
+            <th scope="col">Transaction</th>
+            <th scope="col">Currency</th>
             <th scope="col">Status</th>
-            <th scope="col">Actions</th>
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>ORD-1001</td>
-            <td>John Doe</td>
-            <td>2026-02-28</td>
-            <td>$120.00</td>
-            <td><span class="badge bg-success">Completed</span></td>
-            <td>
-              <button class="btn btn-sm btn-primary">View</button>
-              <button class="btn btn-sm btn-danger">Cancel</button>
-            </td>
-          </tr>
+        <?php display_orders(); ?>
           <!-- Add more rows as needed -->
         </tbody>
       </table>

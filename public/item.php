@@ -12,9 +12,14 @@
       
       <!-- Product Image -->
       <div class="col-md-5">
-        <img src="https://placehold.co/600x500"
+        <?php  $query = query(" SELECT * FROM products WHERE product_id = ". escape_string($_GET['id'])."");
+          confirm($query);
+
+          while ($row = fetch_array($query)) : ?>
+        <img src="../resources/<?php echo display_image($row['product_image']);?>"
              class="img-fluid rounded-start w-100 h-100 object-fit-cover"
              alt="Product Image">
+             <?php endwhile; ?>
       </div>
 
       <!-- Product Info -->
@@ -32,6 +37,7 @@
           
           <p class="card-text text-muted mb-4">
            <?php echo $row['product_description']; ?>
+           
           </p>
 
           <h4 class="text-primary fw-bold mb-4"><?php echo "&#36;". $row["product_price"]; ?></h4>
@@ -39,7 +45,7 @@
           <button class="btn btn-dark btn-md" onclick="window.location.href='../resources/cart.php?add=<?php echo $row['product_id'];?>'">
             🛒 Add to Cart
           </button>
-        <?php endwhile; ?>
+        <?php endwhile; ?><!--end-->
         </div>
       </div>
 

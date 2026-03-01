@@ -34,6 +34,10 @@
                                     <th>Price</th>
                                     <th>Quantity</th>
                                     <th>Sub Total</th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
                                 </tr>
                             </thead>
                             <tbody>

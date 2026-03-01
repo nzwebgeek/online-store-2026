@@ -77,10 +77,14 @@ confirm($query);
 while ($row = fetch_array($query)){
 $sub = $row['product_price'] * $value; // sub total    
 $item_quantity += $value; // create inside to eliminate refresh bug
+
+$product_image=display_image($row['product_image']);
 $product = <<<DELIMETER
 
 <tr>
-    <td>{$row['product_title']}</td>
+    <td>{$row['product_title']}<br>
+    <img src='../resources/{$product_image}'>
+    </td>
     <td>&#36;{$row['product_price']}</td>
     <td>
     {$value}
@@ -132,6 +136,69 @@ return $paypayBtn;
 }
 else{
     return ''; // no products
+}
+
+}
+
+function process_transaction(){
+
+
+if (isset($_GET['tx'])) {
+    
+    $amount      = escape_string($_GET['amt']);
+    $currency    = escape_string($_GET['cc']);
+    $transaction = escape_string($_GET['tx']);
+    $status      = escape_string($_GET['st']);
+
+//----------------------------Prevents Duplicate when browser refreshes
+    $transaction = escape_string($_GET['tx']);
+
+    // 🔥 Check if transaction already exists
+    $check = query("SELECT * FROM orders WHERE order_transaction = '{$transaction}'");
+    confirm($check);
+
+    if (mysqli_num_rows($check) > 0) {
+        return; // STOP — already processed
+    }
+//-----------------------------------------------------
+    $total = 0;
+    $item_quantity = 0;
+
+    foreach ($_SESSION as $name => $value) {
+
+        if ($value > 0 && substr($name,0,8) == 'product_') {
+
+            $length = strlen($name) - 8;    
+            $id = substr($name,8, $length);
+
+                $send_order = query("INSERT INTO orders 
+                (order_amount, order_transaction, order_currency, order_status) 
+                VALUES ('{$amount}', '{$transaction}', '{$currency}', '{$status}')");
+                $last_id = last_id();
+                confirm($send_order);
+
+            $query = query("SELECT * FROM products WHERE product_id = " . escape_string($id));
+            confirm($query);
+
+            while ($row = fetch_array($query)){
+                $product_price = $row["product_price"];
+                $product_title = $row["product_title"];
+                $sub = $row["product_price"] * $value;
+                $item_quantity +=$value;
+
+               $insert_report = query("INSERT INTO reports 
+                (product_id, order_id, product_title, product_price, product_quantity) 
+                VALUES('{$id}','{$last_id}','{$product_title}','{$product_price}','{$value}')");
+                  
+                confirm($insert_report);
+            }
+        }
+        
+      //  echo $item_quantity;
+    }
+
+} else {
+    redirect('index.php');
 }
 
 }
