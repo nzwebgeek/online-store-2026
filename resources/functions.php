@@ -309,3 +309,49 @@ while($row = fetch_array($query)){
     echo "<option value='{$row['cat_id']}'>{$row['cat_title']}</option>";
 }
 }
+/************Updating Products****************/
+function update_product(){
+
+    if (isset($_POST['update'])) {
+
+        // Safe handling with fallback values
+        $product_title       = escape_string($_POST['product_title'] ?? '');
+        $product_category_id = (int) ($_POST['product_category_id'] ?? 0);
+        $product_price       = (float) ($_POST['product_price'] ?? 0);
+        $product_quantity    = (int) ($_POST['product_quantity'] ?? 0);
+        $product_description = escape_string($_POST['product_description'] ?? '');
+        $short_desc          = escape_string($_POST['short_desc'] ?? '');
+
+        // Image handling safely
+        $product_image       = $_FILES['file']['name'] ?? '';
+        $image_temp_location = $_FILES['file']['tmp_name'] ?? '';
+
+        if(!empty($product_image)){
+            move_uploaded_file($image_temp_location, UPLOAD_DIRECTORY . DS . $product_image);
+        }
+
+        // Validate required fields
+        if($product_title == '' || $product_category_id == 0){
+            set_message("Title and Category are required.");
+            redirect("index.php?add_product");
+            return;
+        }
+        // Update
+        $query = "UPDATE products SET ";
+        $query .= "product_title        = '{$product_title }'       ,";
+        $query .= "product_category_id  = '{$product_category_id }' ,";
+        $query .= "product_price        = '{$product_price }'       ,";
+        $query .= "product_quantity     = '{$product_quantity }'    ,";
+        $query .= "product_description  = '{$product_description }' ,";
+        $query .= "short_desc           = '{$short_desc }'           ";        
+        $query .= "WHERE product_id" . escape_string($_GET['id']);
+
+        confirm($query);
+
+        $last_id = last_id();
+
+        set_message("Product added");
+
+        redirect("index.php?products");
+    }
+}
