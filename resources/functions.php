@@ -329,6 +329,14 @@ function update_product(){
         if(!empty($product_image)){
             move_uploaded_file($image_temp_location, UPLOAD_DIRECTORY . DS . $product_image);
         }
+        else{
+            $get_pic = query("SELECT product_image FROM products WHERE product_id =" .escape_string($_GET['id']). "");
+            confirm($get_pic);
+
+            while($row = fetch_array($get_pic)){
+                $product_image = $row["product_image"];
+            }
+        }
 
         // Validate required fields
         if($product_title == '' || $product_category_id == 0){
@@ -344,13 +352,12 @@ function update_product(){
         $query .= "product_quantity     = '{$product_quantity }'    ,";
         $query .= "product_description  = '{$product_description }' ,";
         $query .= "short_desc           = '{$short_desc }'           ";        
-        $query .= "WHERE product_id" . escape_string($_GET['id']);
+        $query .= "WHERE product_id = " . escape_string($_GET['id']);
 
-        confirm($query);
-
-        $last_id = last_id();
-
-        set_message("Product added");
+        $send_update_query = query($query);
+        confirm( $send_update_query );
+        
+        set_message("Product Updated");
 
         redirect("index.php?products");
     }

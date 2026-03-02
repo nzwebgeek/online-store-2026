@@ -1,12 +1,12 @@
 <?php
 
 if (isset($_GET['id'])) {
-    $query = query("SELECT * FROM products WHERE product_id =" . escape_string($_GET["id"]));
+    $query = query("SELECT * FROM products WHERE product_id = " . escape_string($_GET['id']) ." ");
     confirm($query);
 
     while($row = fetch_array($query)) {
         $product_title          = escape_string($row["product_title"]);
-        $product_category       = escape_string($row["product_category_id"]);
+        $product_category_id       = escape_string($row["product_category_id"]);
         $product_price          = escape_string($row["product_price"]);
         $product_description    = escape_string($row["product_description"]);
         $short_desc             = escape_string($row["short_desc"]);
@@ -17,30 +17,14 @@ if (isset($_GET['id'])) {
     
     }
     update_product();
+
 }
 
 ?>
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>SB Admin - Modern Bootstrap 5</title>
 
-    <!-- Bootstrap 5 CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 
-    <!-- Font Awesome -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
-
-    <!-- Custom CSS -->
-    <link href="css/sb-admin.css" rel="stylesheet">
-</head>
-
-<body>
         <!-- Page Content -->
-
             <div class="container-fluid px-2 mt-4">
                 <h1 class="mb-4">Edit Product</h1>
 
@@ -73,14 +57,15 @@ if (isset($_GET['id'])) {
                     <aside class="col-lg-4">
                         <div class="mb-3 d-flex gap-2">
                             <input type="submit" name="draft" class="btn btn-warning w-50" value="Draft">
-                            <input type="submit" name="Update" class="btn btn-primary w-50" value="Update">
+                            <input type="submit" name="update" class="btn btn-primary w-50" value="Update">
                         </div>
 
                         <div class="mb-3">
                             <label for="product-category" class="form-label">Product Category</label>
-                            <select name="product_category" id="product-category" class="form-select">
-                                <option value="<?php echo $product_category; ?>">Select Category</option>
-                            </select>
+                            <select name="product_category_id" class="form-select">
+                                <option value="<?php echo $product_category_id; ?>"><?php echo show_product_category_title($product_category_id); ?></option>
+                                <?php show_categories_add_product_page(); ?>
+                                </select>
                         </div>
 
                          <div class="mb-3">
