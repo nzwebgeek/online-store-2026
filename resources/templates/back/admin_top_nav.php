@@ -4,7 +4,7 @@
         <button class="btn btn-primary d-lg-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasSidebar" aria-controls="offcanvasSidebar">
             <i class="fas fa-bars"></i>
         </button>
-        <a class="navbar-brand ms-2 d-lg-none" href="index.html">SB Admin</a>
+        <a class="navbar-brand ms-2 d-lg-none" href="index.php">SB Admin</a>
 
         <ul class="navbar-nav ms-auto mt-2 mt-lg-0">
             <li class="nav-item dropdown">

@@ -1,55 +1,27 @@
 
 
-
-
-
-    <!-- Page Content -->
+<!-- Page Content -->
     <div class="flex-grow-1 p-4">
-
-     
-
         <!-- Success Message -->
-        <?php if(!empty($message)): ?>
-            <div class="alert alert-success">
-                <?php echo $message; ?>
-            </div>
-        <?php endif; ?>
+        
+        <?php get_message(); ?>
 
         <!-- Users Table -->
         <div class="card shadow-sm">
             <div class="card-body">
-
+                <a href="index.php?add_user" class="btn btn-primary">Add User</a>
                 <div class="table-responsive">
-                    <table class="table table-hover align-middle">
+                    <table class="table table-hover align-middle table-sm">
                         <thead class="table-light">
                             <tr>
                                 <th>Id</th>
-                                <th>Photo</th>
                                 <th>Username</th>
-                                <th>First Name</th>
-                                <th>Last Name</th>
+                                <th>Email</th>
+                                <th>Photo</th>
                             </tr>
                         </thead>
                         <tbody>
-
-                            <tr>
-                                <td>2</td>
-                                <td>
-                                    <img class="admin-user-thumbnail" src="https://placehold.co/62x62" alt="">
-                                </td>
-
-                                <td>
-                                    Rico
-                                    <div class="action-links mt-1">
-                                        <a href="#" class="text-danger">Delete</a>
-                                        <a href="#" class="text-primary">Edit</a>
-                                    </div>
-                                </td>
-
-                                <td>Edwin</td>
-                                <td>Diaz</td>
-                            </tr>
-
+                        <?php display_users(); ?>      
                         </tbody>
                     </table>
                 </div>
