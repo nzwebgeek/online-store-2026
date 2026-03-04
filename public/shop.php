@@ -9,7 +9,7 @@
 <!-- Latest Features Section -->
 <div class="container mb-5">
     <div class="row g-4">
-       <?php get_products_in_shop_page() ?>
+       <?php get_products_with_pagination(); ?>
     </div>
 </div>
 

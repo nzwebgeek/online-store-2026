@@ -17,7 +17,7 @@
                         <div class="card-body d-flex">
                             <i class="fas fa-shopping-cart fa-3x me-3"></i>
                             <div>
-                                <h5 class="card-title">124</h5>
+                                <h5 class="card-title"><?php echo count_all_records('orders')?></h5>
                                 <p class="card-text">New Orders!</p>
                             </div>
                         </div>
@@ -32,7 +32,7 @@
                         <div class="card-body d-flex">
                             <i class="fas fa-box-open fa-3x me-3"></i>
                             <div>
-                                <h5 class="card-title">13</h5>
+                                <h5 class="card-title"><?php echo count_all_records('products')?></h5>
                                 <p class="card-text">Products!</p>
                             </div>
                         </div>
@@ -47,7 +47,7 @@
                         <div class="card-body d-flex">
                             <i class="fas fa-tasks fa-3x me-3"></i>
                             <div>
-                                <h5 class="card-title">12</h5>
+                                <h5 class="card-title"><?php echo count_all_records('categories')?></h5>
                                 <p class="card-text">Categories!</p>
                             </div>
                         </div>

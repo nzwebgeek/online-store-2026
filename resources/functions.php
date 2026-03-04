@@ -52,14 +52,112 @@ function fetch_array($result){
 }
 
 /*******************FRONT END FUNCTIONS************************/
+function count_all_records($table){
+    return mysqli_num_rows(query('SELECT * FROM '.$table));
+}
 
+function count_all_products_in_stock(){
+    return mysqli_num_rows(query('SELECT * FROM products WHERE product_quantity >= 1'));
+}
 // get products
-function get_products(){
-    // Get
-  $query =  query("SELECT * FROM products");
-  confirm($query);
+function get_products_with_pagination($perPage="6"){
+$product_row = count_all_records('products');
+if (isset($_GET['page'])) { // for url
+    // if not a number then replace with empty string
+    $page = preg_replace('#[^[^0-9]#','', $_GET['page']);
+   // echo $page;
+}
+else{ // if not set then default
+    $page = 1;
+}
+
+$lastPage = ceil($product_row / $perPage);
+
+if ($page <1) {
+    $page = 1;
+}
+elseif ($page > $lastPage) {
+    $page = $lastPage;
+}
+
+// middle numbers here
+$middleNumbers = '';
+
+$subt1 = $page -1;
+$subt2 = $page -2; 
+$add1 = $page + 1;
+$add2 = $page + 2;
+// PHP_SELF give current page
+if ($page ==1) {
+    $middleNumbers .= '<li class="page-item active" aria-current="page"><a class="page-link" href="#">'.$page.'</a></li>';
+
+    $middleNumbers .= '<li class="page-item"><a class="page-link" href="'.$_SERVER['PHP_SELF'].
+    '?page='.$add1.'">'.$add1.'</a></li>';
+
+   // echo "<ul class='pagination'>$middleNumbers</ul>";
+}
+elseif ($page == $lastPage) {
+  
+    $middleNumbers .= '<li class="page-item"><a class="page-link" href="'.$_SERVER['PHP_SELF'].
+    '?page='.$subt1.'">'.$subt1.'</a></li>';
+    $middleNumbers .= '<li class="page-item active"><a class="page-link" href="#">'.$page.'</a></li>';
+
+}
+elseif ($page > 2 && $page < $lastPage -1) {
+   
+    $middleNumbers .= '<li class="page-item"><a class="page-link" href="'.$_SERVER['PHP_SELF'].
+    '?page='.$subt2.'">'.$subt2.'</a></li>';
+     
+    $middleNumbers .= '<li class="page-item"><a class="page-link" href="'.$_SERVER['PHP_SELF'].
+    '?page='.$subt1.'">'.$subt1.'</a></li>';
+    
+    $middleNumbers .= '<li class="page-item active"><a class="page-link" href="#">'.$page.'</a></li>';
+    
+    $middleNumbers .= '<li class="page-item"><a class="page-link" href="'.$_SERVER['PHP_SELF'].
+        '?page='.$add1.'">'.$add1.'</a></li>';
+    
+    $middleNumbers .= '<li class="page-item"><a class="page-link" href="'.$_SERVER['PHP_SELF'].
+        '?page='.$add2.'">'.$add2.'</a></li>';
+
+        //echo "<ul class='pagination'>{$middleNumbers}</ul>";
+}
+elseif($page > 1 && $page < $lastPage){
+   $middleNumbers .= '<li class="page-item"><a class="page-link" href="'.$_SERVER['PHP_SELF'].
+    '?page='.$subt1.'">'.$subt1.'</a></li>';  
+   
+    $middleNumbers .= '<li class="page-item active"><a class="page-link" href="#">'.$page.'</a></li>';
+   
+    $middleNumbers .= '<li class="page-item"><a class="page-link" href="'.$_SERVER['PHP_SELF'].
+    '?page='.$add1.'">'.$add1.'</a></li>';
+   // echo "<ul class='pagination'>{$middleNumbers}</ul>";
+
+}
+
+$limit = 'LIMIT '. ($page-1) * $perPage. ','. $perPage;
+
+$query2 = query("SELECT * FROM products WHERE product_quantity >=1 ". $limit);
+confirm($query2);
+
+$outputPagination ="";
+
+/*if ($lastPage !="1") {
+    echo "Page $page of $lastPage";
+}*/
+if ($page != 1) {
+    $prev = $page -1;
+    $outputPagination .='<li class="page-item"><a class="page-link" href="'.$_SERVER['PHP_SELF'].
+        '?page='.$prev.'">Back</a></li>';
+}
+
+$outputPagination .= $middleNumbers;
+
+if ($page !=$lastPage) {
+    $next = $page + 1;
+    $outputPagination .='<li class="page-item"><a class="page-link" href="'.$_SERVER['PHP_SELF'].
+        '?page='.$next.'">Next</a></li>';
+}
   // Fetch from table row
-  while ($row=fetch_array($query)) {
+  while ($row=fetch_array($query2)) {
     $product_image = display_image($row["product_image"]);
   // Herodox
 $product_output = <<<DELIMETER
@@ -76,6 +174,7 @@ $product_output = <<<DELIMETER
 DELIMETER;
 echo $product_output;
   }
+   echo "<div class='text-center'><ul class='pagination'>{$outputPagination}</ul></div>";
 }
 
 function get_categories(){
@@ -138,14 +237,14 @@ $category_product_output = <<<DELIMETER
 <div class="card-body text-center">
 <h5 class="card-title">{$row['product_title']}</h5>
 <p class="card-text">{$row['product_description']}</p>
-<a href="item.php?id={$row['product_id']}" class="btn btn-outline-primary">View Details</a>
+<p class="text-center"><a href="btn btn-primary" target="_blank" href="../resources/cart.php?add={$row['product_id']}">Add to Cart</a>
+<a href="item.php?id={$row['product_id']}" class="btn btn-outline-primary">View Details</a></p>
 </div>
 </div>
 </div>
 DELIMETER;
 echo $category_product_output;
   }
-
 }
 
 function login_user(){

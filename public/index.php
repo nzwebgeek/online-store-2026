@@ -16,7 +16,7 @@
     <h2 class="text-center mb-4">Featured Products</h2>
     <div class="row g-4">
       <!-- Product 1 -->
-      <?php get_products(); ?>
+      <?php get_products_with_pagination(3) ?>
     </div>
   </div>
 </section>
